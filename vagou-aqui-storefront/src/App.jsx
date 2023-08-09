@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -23,6 +23,13 @@ const App = () => {
         setSelectedCategories([]);
     }
 
+    useEffect(() => {
+        if(selectedCategories.length === 0){
+            setFilteredProductList(productList);
+        } else{
+            setFilteredProductList(productList.filter((item)=>(selectedCategories.includes(item.category))));
+        }
+    }, [selectedCategories, productList])
     const getCategories = async () => {
         setLoading(true);
 
