@@ -1,7 +1,7 @@
 {
     "products": [{
-            "id": "ANUNCIO 1",
-            "title": "iPhone 9",
+            "id": 2,
+            "title": "ANUNCIO 1",
             "description": "An apple mobile which is nothing like apple",
             "price": 549,
             "discountPercentage": 12.96,
