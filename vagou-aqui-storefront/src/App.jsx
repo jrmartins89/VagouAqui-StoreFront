@@ -3,6 +3,7 @@ import React from 'react'
 const App = () => {
     const [loading, setLoading] = useState(false);
     const [productList, setProductList] = useState([]);
+    const [selectedCategories, setSelectedCategories] = useState([]);
     const getCategories = async () => {
         setLoading(true);
 
@@ -32,6 +33,22 @@ const getProducts = async () => {
         })
 }
 
+const addCategory = (category) => {
+    if(!selectedCategories.includes(category)){
+        setSelectedCategories(prev => ([...prev, category]))
+    }
+}
+
+const removeCategory = (category) => {
+    if(selectedCategories.includes(category)){
+        const removedList = selectedCategories.filter((item) => (item !== category));
+        setSelectedCategories(removedList);
+    }
+}
+
+const resetCategory = () => { // this function will be used to clear the filter
+    setSelectedCategories([]);
+}
 useEffect(() => {
     getProducts();
 }, [])
