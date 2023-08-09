@@ -2,7 +2,7 @@ import React from 'react'
 
 const App = () => {
     const [loading, setLoading] = useState(false);
-
+    const [productList, setProductList] = useState([]);
     const getCategories = async () => {
         setLoading(true);
 
@@ -16,6 +16,25 @@ const App = () => {
             setLoading(false);
         })
 }
+
+const getProducts = async () => {
+    setLoading(true);
+
+    await fetch('https://dummyjson.com/products')
+        .then(res => res.json())
+        .then(data => .then(data => {
+            setProductList(data.products);
+            getCategories(); // get the categories list
+        })
+        .catch(err => alert(err))
+        .finally(()=>{
+            setLoading(false);
+        })
+}
+
+useEffect(() => {
+    getProducts();
+}, [])
 
     return (
         <div>App</div>
