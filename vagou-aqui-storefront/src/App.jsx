@@ -4,6 +4,25 @@ const App = () => {
     const [loading, setLoading] = useState(false);
     const [productList, setProductList] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
+    const [fileredProductList, setFilteredProductList] = useState([]);
+
+    const addCategory = (category) => {
+        if(!selectedCategories.includes(category)){
+            setSelectedCategories(prev => ([...prev, category]))
+        }
+    }
+
+    const removeCategory = (category) => {
+        if(selectedCategories.includes(category)){
+            const removedList = selectedCategories.filter((item) => (item !== category));
+            setSelectedCategories(removedList);
+        }
+    }
+
+    const resetCategory = () => { // this function will be used to clear the filter
+        setSelectedCategories([]);
+    }
+
     const getCategories = async () => {
         setLoading(true);
 
@@ -17,7 +36,6 @@ const App = () => {
             setLoading(false);
         })
 }
-
 const getProducts = async () => {
     setLoading(true);
 
@@ -33,22 +51,6 @@ const getProducts = async () => {
         })
 }
 
-const addCategory = (category) => {
-    if(!selectedCategories.includes(category)){
-        setSelectedCategories(prev => ([...prev, category]))
-    }
-}
-
-const removeCategory = (category) => {
-    if(selectedCategories.includes(category)){
-        const removedList = selectedCategories.filter((item) => (item !== category));
-        setSelectedCategories(removedList);
-    }
-}
-
-const resetCategory = () => { // this function will be used to clear the filter
-    setSelectedCategories([]);
-}
 useEffect(() => {
     getProducts();
 }, [])
