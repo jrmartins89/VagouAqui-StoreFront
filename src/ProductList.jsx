@@ -5,7 +5,7 @@ const ProductList = ({filteredProductList, loading}) => {
 
     return (
         <div className="w-full h-[85%] px-5">
-            <div className="w-full">Products: </div>
+            <div className="w-full">Anúncios: </div>
             <div className="w-full h-full flex flex-wrap gap-1 justify-between items-start overflow-y-auto">
                 {
                     filteredProductList.map((product) => (
