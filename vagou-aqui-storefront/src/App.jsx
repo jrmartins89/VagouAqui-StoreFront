@@ -40,7 +40,8 @@ const App = () => {
         await fetch('https://dummyjson.com/products/categories')
             .then(res => res.json())
             .then(data => {
-                setCategories(data);
+                const arr = data.slice(0, 6);
+                setCategories(arr);
             })
             .catch(err => alert(err))
             .finally(()=>{
