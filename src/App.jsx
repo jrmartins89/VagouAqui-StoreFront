@@ -74,7 +74,7 @@ const App = () => {
         <div className='w-screen h-screen px-5 bg-gray-100 flex justify-center items-center'>
             <div className='w-full h-[90%] rounded-md bg-white'>
                 <div className='relative w-full h-[15%] flex items-center overflow-x-auto'>
-                    <span className='mx-3 ml-5 font-medium'> Categories: </span>
+                    <span className='mx-3 ml-5 font-medium'> Filtros: </span>
                     {
                         categories.map((category) => (
                             <div
